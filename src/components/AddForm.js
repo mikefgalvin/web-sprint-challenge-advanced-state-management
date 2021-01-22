@@ -33,6 +33,12 @@ class AddForm extends React.Component {
     }
 
     render() {
+        if(this.props.error === 'Wrrronnggggggg') {
+            return (
+                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
+            )
+        }
+        else 
         return(<section>
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
@@ -46,11 +52,6 @@ class AddForm extends React.Component {
                     <label htmlFor="description">Description:</label><br/>
                     <input onChange={this.handleChange} name="description" id="description" value={this.state.description}/>
                 </div>
-
-                {
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                }
-                    
                 <button>Submit Smurf</button>
             </form>
         </section>);
@@ -79,4 +80,4 @@ export default connect(mapStateToProps, { postCharacters })(AddForm);
 //6. Build eventhandler and listener needed to submit a new smurf and dispatch it's assosated action.
 //7. Ensure that the included alert code only displays when error text is passed in from redux.
 //4. DO NOT DELETE THE data-testid FIELD FROM THE ERROR ALERT! This is used for sprint grading.
-//8. Style as necessary.
+//8. Style as necessary. uh huh
