@@ -33,6 +33,12 @@ class AddForm extends React.Component {
     }
 
     render() {
+        if(this.props.error === 'Wrrronnggggggg') {
+            return (
+                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
+            )
+        }
+        else 
         return(<section>
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
@@ -46,11 +52,6 @@ class AddForm extends React.Component {
                     <label htmlFor="description">Description:</label><br/>
                     <input onChange={this.handleChange} name="description" id="description" value={this.state.description}/>
                 </div>
-
-                {
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                }
-                    
                 <button>Submit Smurf</button>
             </form>
         </section>);
