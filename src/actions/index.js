@@ -13,3 +13,29 @@ import axios from 'axios';
 //3. Add set error text action:
 //              - return action object setting error text
 //4. Any other actions you deem nessiary to complete application.
+
+export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
+export const FETCH_CHARACTERS_SUCCESS = 'FETCH_CHARACTERS_SUCCESS';
+export const FETCH_CHARACTERS_FAILURE = 'FETCH_CHARACTERS_FAILURE';
+export const POST_CHARACTERS = 'POST_CHARACTERS';
+
+
+
+export const getCharacters = () => dispatch => {
+  dispatch({ type: FETCH_CHARACTERS });
+  axios
+    .get('http://localhost:3333/smurfs')
+    .then(res =>
+      dispatch({ type: FETCH_CHARACTERS_SUCCESS, payload: res.data })
+    )
+    .catch(err => dispatch({ type: FETCH_CHARACTERS_FAILURE}));
+};
+
+export const postCharacters = (data) => dispatch => {
+    axios
+      .post('http://localhost:3333/smurfs', data)
+      .then(res =>
+        dispatch({ type: POST_CHARACTERS, payload: res.data })
+      )
+      .catch(err => dispatch({ type: FETCH_CHARACTERS_FAILURE}));
+  };
